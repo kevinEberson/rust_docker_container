@@ -1,0 +1,1 @@
+This directory will be shared with the Docker container. Anything put here will be synced with the host os.
