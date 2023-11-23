@@ -4,7 +4,7 @@ services:
     container_name: rust-base
     build:
       context: .
-      dockerfile: Dockerfile.base
+      dockerfile: ./base/Dockerfile.base
     volumes:
       - ${localWorkspaceFolder}/src:/rust
 
@@ -12,6 +12,6 @@ services:
     container_name: rust-embedded-atmel
     build:
       context: .
-      dockerfile: Dockerfile.atmel
+      dockerfile: ./extended/Dockerfile.atmel
     volumes:
       - ${localWorkspaceFolder}/src:/rust
