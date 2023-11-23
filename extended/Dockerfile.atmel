@@ -1,1 +1,21 @@
-FROM rust-base:latest
+FROM rust_docker_container-rust-base:latest
+
+# Update the package lists
+RUN apt-get update
+
+# Install the avr headers, compiler and avrdude
+RUN apt-get install -y \
+    avr-libc \
+    gcc-avr \
+    pkg-config \
+    avrdude \
+    libudev-dev
+    
+# Needed to generate a template
+RUN cargo install cargo-generate
+# This package will automate the flashing for us when runnign cargo run
+RUN cargo install ravedude
+
+# Set the serial port to ttyUSB0 by default, If you have multiple usb devices check which port is the mcu
+# This can be achieved by running "sudo dmesg | grep tty"
+RUN export RAVEDUDE_PORT=/dev/ttyUSB0
