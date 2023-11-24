@@ -1,4 +1,4 @@
-FROM rust_docker_container-rust-base:latest
+FROM rust-base:latest
 
 # Update the package lists
 RUN apt-get update
